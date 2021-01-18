@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureAd:Instance": "https://login.microsoftonline.com/",
+    "AzureAd:TenantId": "common",
+    "AzureAd:ClientId": "",
+    "AzureAd:TokenDecryptionCertificates:0:SourceType": "StoreWithThumbprint",
+    "AzureAd:TokenDecryptionCertificates:0:CertificateStorePath": "LocalMachine/My",
+    "AzureAd:TokenDecryptionCertificates:0:CertificateThumbprint": "",
+    "AzureAd:AllowWebApiToBeAuthorizedByACL": true
+  }
+}
