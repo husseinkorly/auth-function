@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.Resource;
 
 namespace AuthFunction
 {
@@ -14,15 +15,13 @@ namespace AuthFunction
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req)
         {
             var (authenticationStatus, authenticationResponse) = await req.HttpContext.AuthenticateAzureFunctionAsync();
-
             if (authenticationStatus)
             {
                 return new OkObjectResult($"Hello {req.HttpContext.User.GetDisplayName()}");
             }
-            else
-            {
-                return authenticationResponse;
-            }
+            req.HttpContext.VerifyUserHasAnyAcceptedScope("<scope name>");
+
+            return authenticationResponse;
         }
     }
 }
